@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fluttrace/fluttrace.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Fluttrace.instance.addTransport(ConsolePerfTransport());
+  await Fluttrace.instance.start();
   runApp(const MyApp());
 }
 
@@ -65,6 +69,12 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+    
+    // Perform some heavy work to artificially trigger jank
+    final stopTime = DateTime.now().add(const Duration(milliseconds: 50));
+    while (DateTime.now().isBefore(stopTime)) {
+      // Busy wait
+    }
   }
 
   @override

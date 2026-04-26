@@ -42,6 +42,10 @@ class Fluttrace {
     _aggregator = FrameAggregator(collector: _collector!, thresholds: config);
     _engine = ThresholdEngine(aggregator: _aggregator!, thresholds: config);
 
+    _collector!.start();
+    _aggregator!.start();
+    _engine!.start();
+
     _reportSubscription = _aggregator!.stream.listen((report) {
       _latestReport = report;
       for (final transport in _transports) {
@@ -59,9 +63,6 @@ class Fluttrace {
       }
     });
 
-    _aggregator!.start();
-    _engine!.start();
-    _collector!.start();
     _isRunning = true;
   }
 
