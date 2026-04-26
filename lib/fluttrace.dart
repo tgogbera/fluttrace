@@ -7,4 +7,6 @@ export 'src/models/frame_timing_sample.dart';
 export 'src/models/perf_thresholds.dart';
 export 'src/transport/console_perf_transport.dart';
 export 'src/transport/perf_transport.dart';
+export 'src/widgets/fluttrace_hud_controller.dart';
+export 'src/widgets/fluttrace_hud_level_slider.dart';
 export 'src/widgets/fluttrace_overlay.dart';

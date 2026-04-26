@@ -95,6 +95,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 6),
             const Text('Off -> Basic -> Detailed -> Advanced'),
+            const SizedBox(height: 8),
+            const FluttraceHudLevelSlider(),
             const SizedBox(height: 18),
             Card(
               child: Padding(
