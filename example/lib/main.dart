@@ -34,6 +34,9 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
+      builder: (context, child) => FluttraceOverlay(
+        child: child!,
+      ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
