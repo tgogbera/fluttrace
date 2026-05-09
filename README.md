@@ -16,7 +16,7 @@ Add `fluttrace` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fluttrace: ^0.0.1
+  fluttrace: ^1.0.0
 ```
 
 Then run `flutter pub get`.
