@@ -32,9 +32,11 @@ class _FluttraceOverlayState extends State<FluttraceOverlay> {
       child: Stack(
         children: [
           widget.child,
-          Align(
-            alignment: widget.alignment,
-            child: const SafeArea(child: FluttraceOverlayContent()),
+          IgnorePointer(
+            child: Align(
+              alignment: widget.alignment,
+              child: const SafeArea(child: FluttraceOverlayContent()),
+            ),
           ),
         ],
       ),

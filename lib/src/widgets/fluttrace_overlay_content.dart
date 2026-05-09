@@ -53,7 +53,7 @@ class _FluttraceOverlayContentState extends State<FluttraceOverlayContent> {
                   maxWidth: level >= 2 ? 430 : 330,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.black87,
+                  color: Colors.black54,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
                     color: isJanky ? Colors.redAccent : Colors.greenAccent,
