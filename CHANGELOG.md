@@ -1,3 +1,9 @@
+## 1.0.2
+
+* Feature: `FluttraceOverlay` is now continuously draggable across the screen.
+* Fix: FPS estimation metric heavily improved. FPS is now accurately calculated using active frame durations rather than wall-clock time, preventing misleading drops in the metric when the app is idle.
+* Fix: Frame timestamps now use the engine's exact `FramePhase.buildStart` rather than `DateTime.now()` to prevent inaccuracies from asynchronous batch delivery of frame timings.
+
 ## 1.0.1
 
 * Fix: `FluttraceOverlay` FPS estimation metric now correctly calculates using window timestamps instead of max theoretical frames.

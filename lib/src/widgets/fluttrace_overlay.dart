@@ -25,6 +25,8 @@ class FluttraceOverlay extends StatefulWidget {
 }
 
 class _FluttraceOverlayState extends State<FluttraceOverlay> {
+  Offset _dragOffset = Offset.zero;
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -32,10 +34,25 @@ class _FluttraceOverlayState extends State<FluttraceOverlay> {
       child: Stack(
         children: [
           widget.child,
-          IgnorePointer(
-            child: Align(
-              alignment: widget.alignment,
-              child: const SafeArea(child: FluttraceOverlayContent()),
+          Positioned.fill(
+            child: Transform.translate(
+              offset: _dragOffset,
+              child: Align(
+                alignment: widget.alignment,
+                child: SafeArea(
+                  child: GestureDetector(
+                    onPanUpdate: (details) {
+                      setState(() {
+                        _dragOffset += details.delta;
+                      });
+                    },
+                    child: const Material(
+                      type: MaterialType.transparency,
+                      child: FluttraceOverlayContent(),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ],

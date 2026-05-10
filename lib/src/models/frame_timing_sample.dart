@@ -25,5 +25,6 @@ class FrameTimingSample {
        rasterMs = timing.rasterDuration.inMicroseconds / 1000.0,
        totalMs = timing.totalSpan.inMicroseconds / 1000.0,
        isJanky = (timing.totalSpan.inMicroseconds / 1000.0) > frameBudgetMs,
-       timestamp = DateTime.now();
+       timestamp = DateTime.fromMicrosecondsSinceEpoch(
+           timing.timestampInMicroseconds(FramePhase.buildStart));
 }

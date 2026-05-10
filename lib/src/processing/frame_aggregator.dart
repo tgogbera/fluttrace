@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 import '../collection/frame_collector.dart';
 import '../models/models.dart';
 
@@ -76,6 +77,7 @@ class FrameAggregator {
 
     int jankyFrames = 0;
     int droppedFrames = 0;
+    double activeTimeMs = 0.0;
 
     for (int i = 0; i < _count; i++) {
       final sample = _buffer[i]!;
@@ -84,6 +86,7 @@ class FrameAggregator {
         droppedFrames +=
             ((sample.totalMs / _thresholds.frameBudgetMs).ceil() - 1);
       }
+      activeTimeMs += math.max(_thresholds.frameBudgetMs, sample.totalMs);
     }
 
     final double p50 = totals[(_count * 0.50).floor()];
@@ -91,17 +94,13 @@ class FrameAggregator {
     final double p99 = totals[(_count * 0.99).floor()];
     final double jankRate = jankyFrames / _count;
 
-    final oldestSample = _count < _thresholds.windowSize
-        ? _buffer[0]!
-        : _buffer[_currentIndex]!;
-
     double fps = 0.0;
-    if (_count > 1) {
-      final elapsedMs = latestSample.timestamp
-          .difference(oldestSample.timestamp)
-          .inMilliseconds;
-      if (elapsedMs > 0) {
-        fps = ((_count - 1) * 1000.0) / elapsedMs;
+    if (_count > 0 && activeTimeMs > 0) {
+      fps = (_count * 1000.0) / activeTimeMs;
+      // Cap at the target frame rate (e.g., 60 FPS) to avoid floating point inaccuracies showing 60.1
+      final targetFps = 1000.0 / _thresholds.frameBudgetMs;
+      if (fps > targetFps) {
+        fps = targetFps;
       }
     }
 
