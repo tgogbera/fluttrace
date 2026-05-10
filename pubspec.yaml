@@ -13,7 +13,7 @@ repository: https://github.com/tgogbera/fluttrace
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
-version: 1.0.2
+version: 1.0.3
 
 environment:
   sdk: ^3.11.4

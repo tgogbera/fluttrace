@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Feature: `PerfThresholds` now dynamically resolves the device's hardware refresh rate natively, automatically adapting FPS and jank calculations to 120Hz/ProMotion displays without configuration.
+
 ## 1.0.2
 
 * Feature: `FluttraceOverlay` is now continuously draggable across the screen.
