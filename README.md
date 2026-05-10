@@ -63,6 +63,27 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+## Metrics Glossary
+
+Fluttrace collects the following metrics:
+
+### Frame Phase Timings
+Raw timings for an individual frame:
+- **UI (`uiMs`)**: Time spent executing Dart code on the main UI thread (building widgets, layout, paint).
+- **RASTER (`rasterMs`)**: Time spent by the Flutter engine (GPU) to draw the frame to the screen.
+- **TOTAL (`totalMs`)**: The total wall-clock duration of a single frame (UI + Raster).
+
+### Aggregated Metrics
+Statistics calculated over a recent batch of frames (sliding window):
+- **FPS**: Frames Per Second, calculated as `(Number of Frames * 1000) / Active Time`, capped at the target framerate (e.g., 60).
+- **p50 (Median)**: The 50th percentile of total frame times. 50% of frames rendered faster than this value.
+- **p95 / p99**: The 95th and 99th percentiles of frame times. High values here indicate stuttering and outlier jank spikes.
+
+### Jank & Dropped Frames
+- **Jank**: A frame is considered "janky" if its total time exceeds the budget (e.g., > 16.6ms on a 60Hz display).
+- **Jank Rate**: The percentage of frames in the current window that were janky (e.g., 0.05 = 5%).
+- **Dropped Frames**: An estimate of completely missed screen refreshes due to janky frames.
+
 ## Custom Transports
 
 You can easily build custom transports to send metrics to your analytics backend (e.g., Firebase, Datadog) by implementing the `PerfTransport` interface:
