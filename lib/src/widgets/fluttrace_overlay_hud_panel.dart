@@ -15,16 +15,9 @@ class FluttraceOverlayHudPanel extends StatelessWidget {
 
   String _formatMs(double value) => '${value.toStringAsFixed(1)}ms';
 
-  double _estimateFps() {
-    if (report.p50 <= 0) {
-      return 0;
-    }
-    return 1000.0 / report.p50;
-  }
-
   @override
   Widget build(BuildContext context) {
-    final fps = _estimateFps();
+    final fps = report.fps;
 
     if (level == 0) {
       return const SizedBox.shrink();

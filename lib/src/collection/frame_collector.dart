@@ -7,7 +7,7 @@ import '../models/models.dart';
 class FrameCollector {
   final PerfThresholds _thresholds;
   final SchedulerBinding _schedulerBinding;
-  
+
   StreamController<FrameTimingSample>? _controller;
   bool _isRunning = false;
 
@@ -17,8 +17,8 @@ class FrameCollector {
   FrameCollector({
     required PerfThresholds thresholds,
     @visibleForTesting SchedulerBinding? schedulerBinding,
-  })  : _thresholds = thresholds,
-        _schedulerBinding = schedulerBinding ?? SchedulerBinding.instance;
+  }) : _thresholds = thresholds,
+       _schedulerBinding = schedulerBinding ?? SchedulerBinding.instance;
 
   /// Starts collecting frame timings.
   ///
@@ -51,7 +51,7 @@ class FrameCollector {
 
   void _onFrameTimings(List<FrameTiming> timings) {
     if (_controller == null || _controller!.isClosed) return;
-    
+
     for (final timing in timings) {
       final sample = FrameTimingSample(
         timing: timing,

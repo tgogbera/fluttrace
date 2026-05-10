@@ -30,7 +30,9 @@ class ConsolePerfTransport implements PerfTransport {
   Future<void> onAlert(FrameAlert alert) async {
     if (!kDebugMode && !forceInRelease) return;
 
-    final severityStr = alert.severity == AlertSeverity.critical ? 'CRITICAL' : 'WARNING';
+    final severityStr = alert.severity == AlertSeverity.critical
+        ? 'CRITICAL'
+        : 'WARNING';
     debugPrint('[Fluttrace ALERT - $severityStr] ${alert.message}');
   }
 

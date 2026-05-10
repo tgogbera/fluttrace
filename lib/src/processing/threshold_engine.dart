@@ -16,8 +16,8 @@ class ThresholdEngine {
   ThresholdEngine({
     required FrameAggregator aggregator,
     required PerfThresholds thresholds,
-  })  : _aggregator = aggregator,
-        _thresholds = thresholds;
+  }) : _aggregator = aggregator,
+       _thresholds = thresholds;
 
   /// Starts the engine.
   void start() {
@@ -50,12 +50,14 @@ class ThresholdEngine {
 
     if (report.jankRate > _thresholds.jankRateLimit) {
       final now = DateTime.now();
-      if (_lastAlertTime == null || now.difference(_lastAlertTime!) >= const Duration(seconds: 2)) {
+      if (_lastAlertTime == null ||
+          now.difference(_lastAlertTime!) >= const Duration(seconds: 2)) {
         _lastAlertTime = now;
-        
+
         final alert = FrameAlert(
           severity: AlertSeverity.warning,
-          message: 'Jank rate limit exceeded: ${(report.jankRate * 100).toStringAsFixed(1)}% '
+          message:
+              'Jank rate limit exceeded: ${(report.jankRate * 100).toStringAsFixed(1)}% '
               '(Limit: ${(_thresholds.jankRateLimit * 100).toStringAsFixed(1)}%)',
           offendingSample: report.latestSample,
           reportAtAlert: report,

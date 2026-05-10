@@ -12,6 +12,7 @@ void main() {
     final dummySample = MockFrameTimingSample();
 
     final report = FrameReport(
+      fps: 60.0,
       p50: 10.1,
       p95: 15.2,
       p99: 20.3,

@@ -83,7 +83,7 @@ class Fluttrace {
     _collector = null;
     _aggregator = null;
     _engine = null;
-    
+
     _isRunning = false;
   }
 
@@ -93,7 +93,9 @@ class Fluttrace {
   /// The stream of performance reports.
   Stream<FrameReport> get reportStream {
     if (_aggregator == null) {
-      throw StateError('Fluttrace must be started before accessing reportStream.');
+      throw StateError(
+        'Fluttrace must be started before accessing reportStream.',
+      );
     }
     return _aggregator!.stream;
   }
@@ -101,7 +103,9 @@ class Fluttrace {
   /// The stream of performance alerts.
   Stream<FrameAlert> get alertStream {
     if (_engine == null) {
-      throw StateError('Fluttrace must be started before accessing alertStream.');
+      throw StateError(
+        'Fluttrace must be started before accessing alertStream.',
+      );
     }
     return _engine!.stream;
   }

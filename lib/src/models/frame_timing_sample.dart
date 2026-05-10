@@ -21,9 +21,9 @@ class FrameTimingSample {
   FrameTimingSample({
     required FrameTiming timing,
     required double frameBudgetMs,
-  })  : uiMs = timing.buildDuration.inMicroseconds / 1000.0,
-        rasterMs = timing.rasterDuration.inMicroseconds / 1000.0,
-        totalMs = timing.totalSpan.inMicroseconds / 1000.0,
-        isJanky = (timing.totalSpan.inMicroseconds / 1000.0) > frameBudgetMs,
-        timestamp = DateTime.now();
+  }) : uiMs = timing.buildDuration.inMicroseconds / 1000.0,
+       rasterMs = timing.rasterDuration.inMicroseconds / 1000.0,
+       totalMs = timing.totalSpan.inMicroseconds / 1000.0,
+       isJanky = (timing.totalSpan.inMicroseconds / 1000.0) > frameBudgetMs,
+       timestamp = DateTime.now();
 }

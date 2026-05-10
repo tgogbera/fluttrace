@@ -6,10 +6,10 @@ import '../models/models.dart';
 class FrameAggregator {
   final FrameCollector _collector;
   final PerfThresholds _thresholds;
-  
+
   StreamSubscription<FrameTimingSample>? _subscription;
   StreamController<FrameReport>? _controller;
-  
+
   late final List<FrameTimingSample?> _buffer;
   int _currentIndex = 0;
   int _count = 0;
@@ -19,8 +19,8 @@ class FrameAggregator {
   FrameAggregator({
     required FrameCollector collector,
     required PerfThresholds thresholds,
-  })  : _collector = collector,
-        _thresholds = thresholds {
+  }) : _collector = collector,
+       _thresholds = thresholds {
     _buffer = List<FrameTimingSample?>.filled(_thresholds.windowSize, null);
   }
 
@@ -81,7 +81,8 @@ class FrameAggregator {
       final sample = _buffer[i]!;
       if (sample.isJanky) {
         jankyFrames++;
-        droppedFrames += ((sample.totalMs / _thresholds.frameBudgetMs).ceil() - 1);
+        droppedFrames +=
+            ((sample.totalMs / _thresholds.frameBudgetMs).ceil() - 1);
       }
     }
 
@@ -90,7 +91,22 @@ class FrameAggregator {
     final double p99 = totals[(_count * 0.99).floor()];
     final double jankRate = jankyFrames / _count;
 
+    final oldestSample = _count < _thresholds.windowSize
+        ? _buffer[0]!
+        : _buffer[_currentIndex]!;
+
+    double fps = 0.0;
+    if (_count > 1) {
+      final elapsedMs = latestSample.timestamp
+          .difference(oldestSample.timestamp)
+          .inMilliseconds;
+      if (elapsedMs > 0) {
+        fps = ((_count - 1) * 1000.0) / elapsedMs;
+      }
+    }
+
     return FrameReport(
+      fps: fps,
       p50: p50,
       p95: p95,
       p99: p99,

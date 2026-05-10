@@ -5,7 +5,7 @@ import 'frame_timing_sample.dart';
 enum AlertSeverity {
   /// A warning alert, typically when thresholds are close to being breached or lightly breached.
   warning,
-  
+
   /// A critical alert, typically for severe jank or high dropped frames.
   critical,
 }

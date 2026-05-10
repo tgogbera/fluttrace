@@ -2,6 +2,9 @@ import 'frame_timing_sample.dart';
 
 /// A snapshot of performance metrics computed over a specific window of frames.
 class FrameReport {
+  /// The estimated frames per second over this window.
+  final double fps;
+
   /// The 50th percentile frame time in milliseconds.
   final double p50;
 
@@ -28,6 +31,7 @@ class FrameReport {
 
   /// Creates a new [FrameReport].
   const FrameReport({
+    required this.fps,
     required this.p50,
     required this.p95,
     required this.p99,
