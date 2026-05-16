@@ -26,5 +26,6 @@ class FrameTimingSample {
        totalMs = timing.totalSpan.inMicroseconds / 1000.0,
        isJanky = (timing.totalSpan.inMicroseconds / 1000.0) > frameBudgetMs,
        timestamp = DateTime.fromMicrosecondsSinceEpoch(
-           timing.timestampInMicroseconds(FramePhase.buildStart));
+         timing.timestampInMicroseconds(FramePhase.buildStart),
+       );
 }

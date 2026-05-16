@@ -1,5 +1,3 @@
-/// Production-grade frame timing analytics for Flutter.
-
 export 'src/fluttrace.dart';
 export 'src/models/frame_alert.dart';
 export 'src/models/frame_report.dart';

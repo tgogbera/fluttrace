@@ -20,9 +20,9 @@ class PerfThresholds {
     double? frameBudgetMs,
     this.jankRateLimit = 0.05,
     this.windowSize = 120,
-  })  : _uiBudgetMs = uiBudgetMs,
-        _rasterBudgetMs = rasterBudgetMs,
-        _frameBudgetMs = frameBudgetMs;
+  }) : _uiBudgetMs = uiBudgetMs,
+       _rasterBudgetMs = rasterBudgetMs,
+       _frameBudgetMs = frameBudgetMs;
 
   double get _deviceRefreshRate {
     try {
