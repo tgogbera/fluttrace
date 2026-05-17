@@ -1,5 +1,6 @@
 import 'package:fluttrace/fluttrace.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttrace/src/widgets/fluttrace_fps_graph.dart';
 
 class FluttraceOverlayHudPanel extends StatelessWidget {
   const FluttraceOverlayHudPanel({
@@ -101,6 +102,8 @@ class FluttraceOverlayHudPanel extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 8),
+        FluttraceFpsGraph(report: report),
         const SizedBox(height: 8),
         Text(
           'Dropped ${report.droppedFrames} frames in last ${report.windowSize} samples',
