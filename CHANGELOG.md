@@ -1,3 +1,8 @@
+## 1.1.3
+
+* Added topics to pubspec for better pub.dev discoverability
+* Added GitHub Actions workflow for automated publishing
+
 ## 1.1.2
 
 * Fix: Resolved an issue where the demo GIF would not display correctly on pub.dev by using an absolute URL.
