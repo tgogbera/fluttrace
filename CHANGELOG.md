@@ -1,3 +1,7 @@
+## 1.1.1
+
+* Docs: Added demo GIF to README to showcase the performance HUD.
+
 ## 1.1.0
 
 * Feature: Added real-time visual framerate graph (`FluttraceFpsGraph`) to the Advanced HUD level.
