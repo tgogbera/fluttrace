@@ -1,3 +1,8 @@
+## 1.1.0
+
+* Feature: Added real-time visual framerate graph (`FluttraceFpsGraph`) to the Advanced HUD level.
+* Enhancement: Improved `FluttraceMetricTile` UI stability by adding a minimum width to prevent text layout jumps.
+
 ## 1.0.3
 
 * Feature: `PerfThresholds` now dynamically resolves the device's hardware refresh rate natively, automatically adapting FPS and jank calculations to 120Hz/ProMotion displays without configuration.
