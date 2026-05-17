@@ -8,7 +8,7 @@ class FluttraceHudController {
   static final FluttraceHudController instance = FluttraceHudController._();
 
   /// 0: Off, 1: Basic, 2: Detailed, 3: Advanced.
-  final ValueNotifier<int> level = ValueNotifier<int>(1);
+  final ValueNotifier<int> level = ValueNotifier<int>(0);
 
   void setLevel(int nextLevel) {
     level.value = nextLevel.clamp(0, 3);

@@ -2,6 +2,8 @@
 
 A lightweight, production-safe Flutter package for real-time frame timing analytics. `fluttrace` provides a modular architecture to collect, aggregate, and visualize performance metrics directly in your app without relying on external dependencies.
 
+![Fluttrace Demo](fluttrace_demo.gif)
+
 ## Features
 
 - **Real-time Performance HUD**: A customizable, clickable-through overlay widget to display frame statistics live.
