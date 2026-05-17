@@ -1,3 +1,7 @@
+## 1.1.2
+
+* Fix: Resolved an issue where the demo GIF would not display correctly on pub.dev by using an absolute URL.
+
 ## 1.1.1
 
 * Docs: Added demo GIF to README to showcase the performance HUD.
